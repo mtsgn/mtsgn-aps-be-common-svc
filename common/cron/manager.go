@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/robfig/cron/v3"
-	"github.com/solum-sp/aps-be-common/common/logger"
+	"github.com/mtsgn/mtsgn-aps-be-common-svc/common/logger"
 )
 
 type CronManager struct {

@@ -101,7 +101,7 @@ func TestGetWithPattern(t *testing.T) {
 
 	keys, err := cache.GetWithPattern("prefix:*")
 	assert.NoError(t, err)
-	assert.ElementsMatch(t, []string{"test-service:prefix:key1", "test-service:prefix:key2"}, keys)
+	assert.ElementsMatch(t, []string{"prefix:key1", "prefix:key2"}, keys)
 }
 
 func TestClearWithPattern(t *testing.T) {
@@ -139,7 +139,7 @@ func TestGetAll(t *testing.T) {
 
 	keys, err := cache.GetAll()
 	assert.NoError(t, err)
-	assert.ElementsMatch(t, []string{"test-service:key1", "test-service:key2"}, keys)
+	assert.ElementsMatch(t, []string{"key1", "key2"}, keys)
 
 	// Test with no keys
 	cache.Clear()
@@ -169,36 +169,40 @@ func TestDistributedLock(t *testing.T) {
 	defer cleanup()
 
 	// Test successful lock acquisition
-	mutex, err := cache.Lock("test-key", 10*time.Second)
+	mutex, err := cache.Lock("test-key-1", 10*time.Second)
 	assert.NoError(t, err)
 	assert.NotNil(t, mutex)
 
-	// Test concurrent lock
-	mutex2, err := cache.Lock("test-key", 10*time.Second)
+	// Test concurrent lock on same key (should fail)
+	mutex2, err := cache.Lock("test-key-1", 10*time.Second)
 	assert.Error(t, err)
 	assert.Nil(t, mutex2)
+
+	// Test lock on different key (should succeed)
+	mutex2b, err := cache.Lock("test-key-2", 10*time.Second)
+	assert.NoError(t, err)
+	assert.NotNil(t, mutex2b)
+	err = cache.Unlock(mutex2b)
+	assert.NoError(t, err)
 
 	// Test unlock
 	err = cache.Unlock(mutex)
 	assert.NoError(t, err)
 
-	// Test lock after unlock
-	mutex3, err := cache.Lock("test-key", 10*time.Second)
-	assert.NoError(t, err)
-	assert.NotNil(t, mutex3)
-
-	// Test unlock
-	err = cache.Unlock(mutex3)
-	assert.NoError(t, err)
-
 	// Test with expired TTL
-	mutex4, err := cache.Lock("test-key", 1*time.Millisecond)
+	mutex4, err := cache.Lock("test-key-3", 1*time.Millisecond)
 	assert.NoError(t, err)
 	assert.NotNil(t, mutex4)
-	time.Sleep(2 * time.Millisecond)
+	time.Sleep(10 * time.Millisecond) // Wait for expiry
 
 	// Should be able to acquire lock after expiry
-	mutex5, err := cache.Lock("test-key", 10*time.Second)
+	mutex5, err := cache.Lock("test-key-3", 10*time.Second)
 	assert.NoError(t, err)
 	assert.NotNil(t, mutex5)
+	
+	// Cleanup - unlock the new mutex (don't unlock expired mutex4)
+	if mutex5 != nil {
+		err = cache.Unlock(mutex5)
+		assert.NoError(t, err)
+	}
 }

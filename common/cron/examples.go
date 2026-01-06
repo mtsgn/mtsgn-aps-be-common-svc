@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/solum-sp/aps-be-common/common/logger"
+	"github.com/mtsgn/mtsgn-aps-be-common-svc/common/logger"
 )
 
 // DatabaseCleanupJob is an example job that cleans up old database records

@@ -7,7 +7,7 @@ import (
 	"os"
 	"sync"
 
-	"github.com/solum-sp/aps-be-common/common/logger"
+	"github.com/mtsgn/mtsgn-aps-be-common-svc/common/logger"
 )
 
 // JobFactory is a function that creates a new job instance

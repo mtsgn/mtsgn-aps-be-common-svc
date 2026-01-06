@@ -9,7 +9,7 @@ import (
 	"github.com/confluentinc/confluent-kafka-go/v2/kafka"
 	"github.com/confluentinc/confluent-kafka-go/v2/schemaregistry/serde"
 	"github.com/confluentinc/confluent-kafka-go/v2/schemaregistry/serde/avrov2"
-	"github.com/solum-sp/aps-be-common/common/utils"
+	"github.com/mtsgn/mtsgn-aps-be-common-svc/common/utils"
 )
 
 type kafkaSubscriber struct {

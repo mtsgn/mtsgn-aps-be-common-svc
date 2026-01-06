@@ -1,6 +1,6 @@
 package otherpackage
 
-import "github.com/solum-sp/aps-be-common/common/errorx"
+import "github.com/mtsgn/mtsgn-aps-be-common-svc/common/errorx"
 
 type SysError struct {
 	ErrIncorrectPassword string `json:"104001"`

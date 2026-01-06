@@ -7,7 +7,7 @@ Common Go packages and utilities for APS backend services.
 To use these common packages in your Go project, add this repository as a dependency:
 
 ```bash
-go get -u github.com/solum-sp/aps-be-common
+go get -u github.com/mtsgn/mtsgn-aps-be-common-svc
 ```
 
 ## Available Packages
@@ -242,7 +242,7 @@ The common packages are organized in the `common` directory and include:
 
     #### Basic Usage
     ```go
-    import "github.com/solum-sp/aps-be-common/common/cron"
+    import "github.com/mtsgn/mtsgn-aps-be-common-svc/common/cron"
 
     // Create cron manager
     manager := cron.NewCronManager(logger)

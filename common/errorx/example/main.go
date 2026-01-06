@@ -6,8 +6,8 @@ import (
 	"time"
 
 	"github.com/golobby/container/v3"
-	errorx "github.com/solum-sp/aps-be-common/common/errorx"
-	"github.com/solum-sp/aps-be-common/common/errorx/example/otherpackage"
+	errorx "github.com/mtsgn/mtsgn-aps-be-common-svc/common/errorx"
+	"github.com/mtsgn/mtsgn-aps-be-common-svc/common/errorx/example/otherpackage"
 )
 
 /*

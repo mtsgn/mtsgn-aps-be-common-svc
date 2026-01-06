@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/solum-sp/aps-be-common/common/loader"
+	"github.com/mtsgn/mtsgn-aps-be-common-svc/common/loader"
 )
 
 type SysError struct {

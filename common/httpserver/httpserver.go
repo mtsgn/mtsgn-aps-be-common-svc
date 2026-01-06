@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/solum-sp/aps-be-common/common/logger"
+	"github.com/mtsgn/mtsgn-aps-be-common-svc/common/logger"
 
 	"github.com/gin-gonic/gin"
 

@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/confluentinc/confluent-kafka-go/v2/kafka"
-	"github.com/solum-sp/aps-be-common/common/utils"
+	"github.com/mtsgn/mtsgn-aps-be-common-svc/common/utils"
 )
 
 func CreateTopicIfNotExist(adminClient *kafka.AdminClient, topicName string, numPartitions int, replicationFactor int) error {

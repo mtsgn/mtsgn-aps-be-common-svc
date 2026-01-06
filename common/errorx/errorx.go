@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"reflect"
 
-	"github.com/solum-sp/aps-be-common/common/loader"
+	"github.com/mtsgn/mtsgn-aps-be-common-svc/common/loader"
 )
 
 // **Default error file path**
