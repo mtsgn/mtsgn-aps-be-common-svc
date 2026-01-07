@@ -199,7 +199,7 @@ func TestDistributedLock(t *testing.T) {
 	mutex5, err := cache.Lock("test-key-3", 10*time.Second)
 	assert.NoError(t, err)
 	assert.NotNil(t, mutex5)
-	
+
 	// Cleanup - unlock the new mutex (don't unlock expired mutex4)
 	if mutex5 != nil {
 		err = cache.Unlock(mutex5)

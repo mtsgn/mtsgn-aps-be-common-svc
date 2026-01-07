@@ -6,8 +6,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/robfig/cron/v3"
 	"github.com/mtsgn/mtsgn-aps-be-common-svc/common/logger"
+	"github.com/robfig/cron/v3"
 )
 
 type CronManager struct {

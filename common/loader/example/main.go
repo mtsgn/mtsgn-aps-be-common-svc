@@ -14,7 +14,6 @@ type SysError struct {
 	ErrNoContent         string `json:"NoContent"`
 }
 
-
 func main() {
 	var ec SysError
 	err := loader.Load(&ec)

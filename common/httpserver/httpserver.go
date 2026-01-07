@@ -7,7 +7,6 @@ import (
 	"github.com/mtsgn/mtsgn-aps-be-common-svc/common/logger"
 
 	"github.com/gin-gonic/gin"
-
 )
 
 type HttpServerConfig struct {
@@ -30,17 +29,16 @@ type RouteConfig struct {
 	Middlewares []gin.HandlerFunc
 }
 
-
 var DefaultConfig = HttpServerConfig{
 	Host: "localhost",
 	Port: 8080,
 }
 
 type HTTPServer struct {
-	config HttpServerConfig
-	logger logger.ILogger
-	router *gin.Engine
-	registrars map[string][]RouteRegistrar
+	config            HttpServerConfig
+	logger            logger.ILogger
+	router            *gin.Engine
+	registrars        map[string][]RouteRegistrar
 	globalMiddlewares []gin.HandlerFunc
 }
 
@@ -86,7 +84,6 @@ func (s *HTTPServer) SetupRouter() {
 		}
 	}
 }
-
 
 func (s *HTTPServer) AddRouteV2(group *gin.RouterGroup, cfg RouteConfig) {
 	handler := cfg.Handler
